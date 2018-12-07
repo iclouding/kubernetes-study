@@ -1,1 +1,19 @@
-apiVersion:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+  namespace: default
+  labels:
+    app: myapp
+    tier: frontend
+spec:
+  containers:
+  - name: myapp
+    image: ikubernetes/myapp:v1
+    imagePullPolicy: Always
+  - name: busybox
+    image: busybox:latest
+    command:
+    - "/bin/bash"
+    - "-c"
+    - "sleep 3600"
